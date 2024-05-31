@@ -1,3 +1,0 @@
-ITEM, PREÇO
-Video Gamer, 3000
-TV, 4000

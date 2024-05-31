@@ -17,9 +17,11 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,6 +39,8 @@ import model.Municipio;
  */
 public class Program extends Application {
     private static ObservableList<String> listMunicipios = FXCollections.observableArrayList();
+    private static ObservableList<Municipio> municipios = FXCollections.observableArrayList();
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -54,44 +58,49 @@ public class Program extends Application {
         String path = "C:\\Projeto Integrador\\entrada\\01.ProjetoIntegrador_BaseMunicipios_In.csv";
         Municipio municipio;
         
-        try(BufferedReader br = new BufferedReader(new FileReader(path))){
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"))){
             String line = br.readLine();
             
             while((line = br.readLine()) != null){
                 String[] data = line.split(";");
                 int codigo = Integer.parseInt(data[0]);
-                double populacao = Double.parseDouble(data[6].replace(",", ".").replace(".", ""));
-                double domicilios = Double.parseDouble(data[7].replace(",", ".").replace(".", ""));
+                double populacao = Double.parseDouble(data[6].replace(".", "").replace(",", "."));
+                double domicilios = Double.parseDouble(data[7].replace(".", "").replace(",", "."));
                 String municpio = data[1];
                 listMunicipios.add(municpio);
                 String microrregiao = data[2];
                 String estado = data[3];
                 String regiaoGeografica = data[4];
-                double area = Double.parseDouble(data[5].replace(",", ".").replace(".", ""));
-                double pibTotal = Double.parseDouble(data[8].replace(",", ".").replace(".", ""));
-                double rendaMedia = Double.parseDouble(data[10].replace(",", ".").replace(".", ""));
-                double rendaNominal = Double.parseDouble(data[11].replace(",", ".").replace(".", ""));
-                double peaDia = Double.parseDouble(data[12].replace(",", ".").replace(".", ""));
-                double idhGeral = Double.parseDouble(data[9].replace(",", ".").replace(".", ""));
-                double idhEducacao = Double.parseDouble(data[13].replace(",", ".").replace(".", ""));
-                double idhlongevidade = Double.parseDouble(data[14].replace(",", ".").replace(".", ""));
-                
+                double area = Double.parseDouble(data[5].replace(".", "").replace(",", "."));
+                double pibTotal = Double.parseDouble(data[8].replace(".", "").replace(",", "."));
+                double rendaMedia = Double.parseDouble(data[10].replace(".", "").replace(",", "."));
+                double rendaNominal = Double.parseDouble(data[11].replace(".", "").replace(",", "."));
+                double peaDia = Double.parseDouble(data[12].replace(".", "").replace(",", "."));
+                double idhGeral = Double.parseDouble(data[9].replace(".", "").replace(",", "."));
+                double idhEducacao = Double.parseDouble(data[13].replace(".", "").replace(",", "."));
+                double idhlongevidade = Double.parseDouble(data[14].replace(".", "").replace(",", "."));
                 municipio = new Municipio(codigo, populacao, domicilios, municpio, microrregiao, estado, regiaoGeografica, area, pibTotal, rendaMedia, rendaNominal, peaDia, idhGeral, idhEducacao, idhlongevidade);
-
-                line = br.readLine();
+                municipios.add(municipio);
                 
-                System.out.println(municpio);
+                System.out.println(municipio.getClassIDHGeral());
+                System.out.println(municipio.getClassIDHEducacao());
+                System.out.println(municipio.getClassIDHLongevidade());
+                
+                line = br.readLine();
             }
-            System.out.println("á é ç ã õ");
             
         }catch(IOException e){
             System.out.println("Error> " + e.getMessage());
         }
-        //launch(args); 
+        launch(args); 
     }
     
     public static ObservableList<String> getMunicipios() {
         return listMunicipios;
+    }
+    
+    public static ObservableList<Municipio> getObjMunicipios() {
+        return municipios;
     }
     
 }

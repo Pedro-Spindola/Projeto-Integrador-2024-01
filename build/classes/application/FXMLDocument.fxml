@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -20,19 +21,76 @@
             <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
          </effect>
          <children>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="520.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="ÚLTIMA ATUALIZAÇÃO" textAlignment="CENTER" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
             <Label layoutX="65.0" layoutY="10.0" minHeight="60.0" minWidth="100.0" text="E-GO" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Button layoutX="20.0" layoutY="630.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #A3AE9E; -fx-border-radius: 10;" text="Sair" textFill="#e8bb00">
+            <Button fx:id="sair" layoutX="20.0" layoutY="630.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #e8bb00; -fx-background-radius: 10; -fx-border-color: #e8bb00; -fx-border-radius: 10;" text="Sair" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button layoutX="20.0" layoutY="590.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #A3AE9E; -fx-border-radius: 10;" text="Editar" textFill="#e8bb00">
+            <Button fx:id="editar" layoutX="20.0" layoutY="590.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #F9FFF6; -fx-border-radius: 10;" text="Editar" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
+            <Pane layoutX="10.0" layoutY="570.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
+            <Pane layoutX="10.0" layoutY="70.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
+            <Label layoutX="10.0" layoutY="350.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="POPULAÇÃO:" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="390.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="PIB TOTAL (R$):" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="15.0" layoutY="310.0" prefHeight="20.0" prefWidth="200.0" text="RANKING NO ESTADO" textAlignment="CENTER" textFill="#e8bb00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="430.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="PIB PER CAPITA (R$):" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="470.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="IDH GERAL:" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="540.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="30/05/2024 23:40:00" textAlignment="CENTER" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="180.0" layoutY="350.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="180.0" layoutY="390.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="180.0" layoutY="430.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="180.0" layoutY="470.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children></Pane>
       <Pane layoutX="260.0" layoutY="20.0" maxHeight="50.0" maxWidth="1010.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10;">
          <children>
@@ -41,7 +99,7 @@
                   <Image url="@../resources/Flag_of_Goiás.svg.png" />
                </image>
             </ImageView>
-            <ComboBox fx:id="comboBoxMunicipios" layoutX="10.0" layoutY="12.0" maxHeight="200.0" maxWidth="600.0" prefHeight="20.0" prefWidth="600.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #A3AE9E; -fx-border-radius: 10;" />
+            <ComboBox fx:id="comboBoxMunicipios" layoutX="10.0" layoutY="12.0" maxHeight="200.0" maxWidth="600.0" prefHeight="20.0" prefWidth="600.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" />
          </children>
          <effect>
             <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
@@ -57,153 +115,206 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="40.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="CÓDIGO DO MUNICÍPIO">
+            <Label layoutX="18.0" layoutY="40.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="CÓDIGO DO MUNICÍPIO">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="1.0" />
+               </opaqueInsets>
+            </Label>
+            <TextField fx:id="tfCodigo" editable="false" layoutX="10.0" layoutY="60.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="318.0" layoutY="40.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="NOME DO MUNICÍPIO">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="10.0" layoutY="60.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="310.0" layoutY="40.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="NOME DO MUNICÍPIO">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Label>
-            <TextField disable="true" layoutX="310.0" layoutY="60.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <TextField fx:id="tfNome" editable="false" layoutX="310.0" layoutY="60.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
             <Label layoutX="50.0" layoutY="100.0" prefHeight="20.0" prefWidth="200.0" text="TERRITÓRIO" textFill="#007b63">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="130.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="REGIÃO GEOGRÁFICA">
+            <Label layoutX="18.0" layoutY="130.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="REGIÃO GEOGRÁFICA">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="10.0" layoutY="150.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="310.0" layoutY="130.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="ESTADO - UF">
+            <TextField fx:id="tfRegiao" editable="false" layoutX="10.0" layoutY="150.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="318.0" layoutY="130.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="ESTADO - UF">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="310.0" layoutY="150.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="610.0" layoutY="130.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="MICRORREGIÃO DO MUNICÍPIO">
+            <TextField fx:id="tfEstado" editable="false" layoutX="310.0" layoutY="150.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="618.0" layoutY="130.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="MICRORREGIÃO DO MUNICÍPIO">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="610.0" layoutY="150.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="10.0" layoutY="180.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="ÁREA DO MUNICÍPIO (Km²)">
+            <TextField fx:id="tfMicrorregiao" editable="false" layoutX="610.0" layoutY="150.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="18.0" layoutY="180.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="ÁREA DO MUNICÍPIO (Km²)">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="10.0" layoutY="200.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <TextField fx:id="tfArea" editable="false" layoutX="10.0" layoutY="200.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
             <Label layoutX="50.0" layoutY="240.0" prefHeight="20.0" prefWidth="200.0" text="POPULAÇÃO" textFill="#007b63">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="270.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="POPULAÇÃO DO MUNICÍPIO">
+            <Label layoutX="18.0" layoutY="270.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="POPULAÇÃO DO MUNICÍPIO">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="10.0" layoutY="290.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="310.0" layoutY="270.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="QUANTIDADE DE DOMICÍLIOS">
+            <TextField fx:id="tfPopulacao" editable="false" layoutX="10.0" layoutY="290.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="318.0" layoutY="270.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="QUANTIDADE DE DOMICÍLIOS">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="310.0" layoutY="290.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="610.0" layoutY="270.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="DENSIDADE DEMOGRÁFICA">
+            <TextField fx:id="tfDomicilios" editable="false" layoutX="310.0" layoutY="290.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="618.0" layoutY="270.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="DENSIDADE DEMOGRÁFICA">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="610.0" layoutY="290.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <TextField fx:id="tfDensidade" editable="false" layoutX="610.0" layoutY="290.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
             <Label layoutX="50.0" layoutY="330.0" prefHeight="20.0" prefWidth="200.0" text="ECONOMIA" textFill="#007b63">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="360.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="PIB TOTAL (R$)">
+            <Label layoutX="18.0" layoutY="360.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="PIB TOTAL (R$)">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="10.0" layoutY="380.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="310.0" layoutY="360.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="PIB PER CAPITA">
+            <TextField fx:id="tfPib" editable="false" layoutX="10.0" layoutY="380.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="318.0" layoutY="360.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="PIB PER CAPITA (R$)">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="310.0" layoutY="380.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="610.0" layoutY="360.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="PEA DIA">
+            <TextField fx:id="tfPerCapita" editable="false" layoutX="310.0" layoutY="380.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="618.0" layoutY="360.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="PEA DIA (R$)">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="610.0" layoutY="380.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="10.0" layoutY="410.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="RENDA MÉDIA">
+            <TextField fx:id="tfPea" editable="false" layoutX="610.0" layoutY="380.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="18.0" layoutY="410.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="RENDA MÉDIA (R$)">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="10.0" layoutY="430.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="310.0" layoutY="410.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="RENDA NOMINAL">
+            <TextField fx:id="tfRendaMedia" editable="false" layoutX="10.0" layoutY="430.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="318.0" layoutY="410.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="RENDA NOMINAL (R$)">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="310.0" layoutY="430.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <TextField fx:id="tfRendaNominal" editable="false" layoutX="310.0" layoutY="430.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
             <Label layoutX="50.0" layoutY="470.0" prefHeight="20.0" prefWidth="300.0" text="ÍNDICE DE DESENVOLVIMENTO HUMANO" textFill="#007b63">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: GERAL">
+            <Label layoutX="18.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: GERAL">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="10.0" layoutY="520.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="310.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: EDUCAÇÃO">
+            <TextField fx:id="tfIDHGeral" editable="false" layoutX="10.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="318.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: EDUCAÇÃO">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="310.0" layoutY="520.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <Label layoutX="610.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: LONGEVIDADE">
+            <TextField fx:id="tfIHGEducacao" editable="false" layoutX="310.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <Label layoutX="618.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: LONGEVIDADE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="610.0" layoutY="520.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
-            <ImageView fitHeight="150.0" fitWidth="25.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="tfIHDLongevidade" editable="false" layoutX="610.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <ImageView fitHeight="150.0" fitWidth="22.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/basic.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="25.0" layoutX="10.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="22.0" layoutX="10.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/territorio.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="25.0" layoutX="10.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="22.0" layoutX="10.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/populacao.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="25.0" layoutX="10.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="22.0" layoutX="10.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/economia.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="25.0" layoutX="10.0" layoutY="465.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="22.0" layoutX="10.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/louro.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="imagemIDHGeral" fitHeight="20.0" fitWidth="16.0" layoutX="218.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon/null.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imagemIDHEducacao" fitHeight="20.0" fitWidth="16.0" layoutX="518.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon/null.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imagemIDHLongevidade" fitHeight="20.0" fitWidth="16.0" layoutX="818.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon/null.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="18.0" layoutY="580.0" prefHeight="20.0" prefWidth="82.0" text="Classificação:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="580.0" prefHeight="20.0" prefWidth="60.0" text="Muito Alto" />
+            <Label layoutX="230.0" layoutY="580.0" prefHeight="20.0" prefWidth="60.0" text="Alto" />
+            <Label layoutX="340.0" layoutY="580.0" prefHeight="20.0" prefWidth="60.0" text="Médio" />
+            <Label layoutX="460.0" layoutY="580.0" prefHeight="20.0" prefWidth="60.0" text="Baixo" />
+            <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="160.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon/setaMuitoAlto.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="260.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon/setaAlto.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="380.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon/setaMedio.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="495.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon/setaBaixo.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="50.0" layoutY="30.0" prefHeight="1.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #007B63 0%, #e8bb00 50%, transparent 100%);;" />
+            <Pane layoutX="20.0" layoutY="570.0" prefHeight="1.0" prefWidth="960.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #007B63 0%, #e8bb00 50%, transparent 100%);;" />
+            <Pane layoutX="50.0" layoutY="490.0" prefHeight="1.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #007B63 0%, #e8bb00 50%, transparent 100%);;" />
+            <Pane layoutX="50.0" layoutY="350.0" prefHeight="1.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #007B63 0%, #e8bb00 50%, transparent 100%);;" />
+            <Pane layoutX="50.0" layoutY="260.0" prefHeight="1.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #007B63 0%, #e8bb00 50%, transparent 100%);;" />
+            <Pane layoutX="50.0" layoutY="120.0" prefHeight="1.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #007B63 0%, #e8bb00 50%, transparent 100%);;" />
          </children>
       </Pane>
    </children>
