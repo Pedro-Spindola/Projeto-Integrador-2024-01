@@ -1,0 +1,11 @@
+.combo-box-popup > .list-view {
+    -fx-background-color: #F9FFF6;
+}
+
+.combo-box-popup > .list-view .list-cell:hover {
+    -fx-background-color: #007B63;
+}
+
+.combo-box-popup > .list-view .list-cell:selected {
+    -fx-background-color: #007B63;
+}

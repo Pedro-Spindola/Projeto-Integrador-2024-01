@@ -24,8 +24,8 @@ package model;
  * @brief Class Municipio
  */
 public class Municipio {
-    private int codigo;
-    private String municipio, microrregiao, estado, regiaoGeografica, classIDHGeral, classIDHEducacao, classIDHLongevidade;
+    private int codigo, rankPopulacao, rankPIBTotal, rankPIBPerCapita, rankIDHGeral;
+    private String municipio, microrregiao, estado, regiaoGeografica, classIDHGeral, classIDHEducacao, classIDHLongevidade, dateUltimaModificacao = "01/06/2024 01:40:00";
     private double area, populacao, domicilios, pibTotal, pibPerCapita, rendaMedia, rendaNominal, peaDia, idhGeral, idhEducacao, idhlongevidade, densidadeDemografica;
 
     public Municipio() {
@@ -40,7 +40,7 @@ public class Municipio {
         this.estado = estado;
         this.regiaoGeografica = regiaoGeografica;
         this.area = area;
-        this.pibTotal = pibTotal;
+        this.pibTotal = (pibTotal * 1000);
         this.rendaMedia = rendaMedia;
         this.rendaNominal = rendaNominal;
         this.peaDia = peaDia;
@@ -52,7 +52,15 @@ public class Municipio {
         this.classIDHGeral = classificarIDHGeral(idhGeral);
         this.classIDHEducacao = classificarIDHEducacao(idhEducacao);
         this.classIDHLongevidade = classificarIDHLongevidade(idhlongevidade);
+        
     }
+    public void atualizarDados(){
+        this.densidadeDemografica = calcularDensidadeDemografica(populacao, area);
+        this.pibPerCapita = calcularPIBPerCapita(populacao, pibTotal);
+        this.classIDHGeral = classificarIDHGeral(idhGeral);
+        this.classIDHEducacao = classificarIDHEducacao(idhEducacao);
+        this.classIDHLongevidade = classificarIDHLongevidade(idhlongevidade);
+    };
     
     private double calcularDensidadeDemografica(double populacao, double area){
         double resultado = populacao / area;
@@ -60,7 +68,7 @@ public class Municipio {
     }
     
     private double calcularPIBPerCapita(double populacao, double pib){
-        double resultado = pib / populacao;
+        double resultado = ((pib * 1000) / populacao);
         return resultado;
     }
     
@@ -114,6 +122,14 @@ public class Municipio {
         this.codigo = codigo;
     }
 
+    public String getDateUltimaModificacao() {
+        return dateUltimaModificacao;
+    }
+
+    public void setDateUltimaModificacao(String dateUltimaModificacao) {
+        this.dateUltimaModificacao = dateUltimaModificacao;
+    }
+    
     public String getMunicipio() {
         return municipio;
     }
@@ -265,6 +281,39 @@ public class Municipio {
     public void setClassIDHLongevidade(String classIDHLongevidade) {
         this.classIDHLongevidade = classIDHLongevidade;
     }
+
+    public int getRankPopulacao() {
+        return rankPopulacao;
+    }
+
+    public void setRankPopulacao(int rankPopulacao) {
+        this.rankPopulacao = rankPopulacao;
+    }
+
+    public int getRankPIBTotal() {
+        return rankPIBTotal;
+    }
+
+    public void setRankPIBTotal(int rankPIBTotal) {
+        this.rankPIBTotal = rankPIBTotal;
+    }
+
+    public int getRankPIBPerCapita() {
+        return rankPIBPerCapita;
+    }
+
+    public void setRankPIBPerCapita(int rankPIBPerCapita) {
+        this.rankPIBPerCapita = rankPIBPerCapita;
+    }
+
+    public int getRankIDHGeral() {
+        return rankIDHGeral;
+    }
+
+    public void setRankIDHGeral(int rankIDHGeral) {
+        this.rankIDHGeral = rankIDHGeral;
+    }
+    
     
     
 }

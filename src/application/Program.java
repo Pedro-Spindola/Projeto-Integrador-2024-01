@@ -29,6 +29,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Municipio;
 
 /**
@@ -44,16 +45,13 @@ public class Program extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        stage.setResizable(false);
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
     }
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args){
         String path = "C:\\Projeto Integrador\\entrada\\01.ProjetoIntegrador_BaseMunicipios_In.csv";
         Municipio municipio;
@@ -82,17 +80,38 @@ public class Program extends Application {
                 municipio = new Municipio(codigo, populacao, domicilios, municpio, microrregiao, estado, regiaoGeografica, area, pibTotal, rendaMedia, rendaNominal, peaDia, idhGeral, idhEducacao, idhlongevidade);
                 municipios.add(municipio);
                 
-                System.out.println(municipio.getClassIDHGeral());
-                System.out.println(municipio.getClassIDHEducacao());
-                System.out.println(municipio.getClassIDHLongevidade());
-                
-                line = br.readLine();
             }
             
         }catch(IOException e){
             System.out.println("Error> " + e.getMessage());
         }
+        calcularRanking();
         launch(args); 
+    }
+    
+    public static void calcularRanking(){
+        // Percorrendo a lista com for
+        for (int i = 0; i < municipios.size(); i++) {
+            int rankPopulacao = 1, rankPIBTotal = 1, rankPIBPerCapita = 1, rankIDHGeral = 1;
+            for (int j = 0; j < municipios.size(); j++){
+                if(municipios.get(i).getPopulacao() < municipios.get(j).getPopulacao()){
+                    rankPopulacao++;
+                }
+                if(municipios.get(i).getPibTotal()< municipios.get(j).getPibTotal()){
+                    rankPIBTotal++;
+                }
+                if(municipios.get(i).getPibPerCapita()< municipios.get(j).getPibPerCapita()){
+                    rankPIBPerCapita++;
+                }
+                if(municipios.get(i).getIdhGeral()< municipios.get(j).getIdhGeral()){
+                    rankIDHGeral++;
+                }
+            }
+            municipios.get(i).setRankPopulacao(rankPopulacao);
+            municipios.get(i).setRankPIBTotal(rankPIBTotal);
+            municipios.get(i).setRankPIBPerCapita(rankPIBPerCapita);
+            municipios.get(i).setRankIDHGeral(rankIDHGeral);
+        }
     }
     
     public static ObservableList<String> getMunicipios() {

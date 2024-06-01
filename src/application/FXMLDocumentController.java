@@ -16,11 +16,15 @@
  */
 package application;
 
+import static java.lang.Double.parseDouble;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -34,6 +38,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Municipio;
+import javafx.stage.Stage;
 
 /**
  *
@@ -98,6 +103,21 @@ public class FXMLDocumentController implements Initializable {
     private TextField tfIHDLongevidade;
     
     @FXML
+    private Label laRankingPopulacao;
+    
+    @FXML
+    private Label laRankingPib;
+    
+    @FXML
+    private Label laRankingPerCapita;
+    
+    @FXML
+    private Label laRankingIDHGeral;
+    
+    @FXML
+    private Label laDateUltimaAtualizacao;
+    
+    @FXML
     private ImageView imagemIDHGeral;
     
     @FXML
@@ -107,16 +127,97 @@ public class FXMLDocumentController implements Initializable {
     private ImageView imagemIDHLongevidade;
     
     @FXML
+    private ImageView imagemBandeiraMunicipio;
+    
+    @FXML
+    private ImageView imagemMapsMunicipio;
+    
+    @FXML
     private Button sair;
     
     @FXML
     private Button editar;
     
-    String imagePathMuitoAlto = "/resources/icon/setaMuitoAlto.png";
-    String imagePathAlto = "/resources/icon/setaAlto.png";
-    String imagePathMedio = "/resources/icon/setaMedio.png";
-    String imagePathBaixo = "/resources/icon/setaBaixo.png";
-    String imagePathNull = "/resources/icon/null.png";
+    private String imagePathMuitoAlto = "/resources/icon/setaMuitoAlto.png";
+    private String imagePathAlto = "/resources/icon/setaAlto.png";
+    private String imagePathMedio = "/resources/icon/setaMedio.png";
+    private String imagePathBaixo = "/resources/icon/setaBaixo.png";
+    private String imagePathNull = "/resources/icon/null.png";
+    private boolean isButtonPressed = false;
+    
+    @FXML
+    private void FecharProgramaButton(ActionEvent event) {
+        Platform.exit(); // Fecha o programa
+    }
+    
+    @FXML
+    private void AtivarButtonEditar() {
+        if (!isButtonPressed) {
+            String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: #e8bb00;";
+            
+            tfPopulacao.setStyle(estilo);
+            tfDomicilios.setStyle(estilo);
+            tfPib.setStyle(estilo);
+            tfRendaMedia.setStyle(estilo);
+            tfRendaNominal.setStyle(estilo);
+            tfPea.setStyle(estilo);
+            tfIDHGeral.setStyle(estilo);
+            tfIHGEducacao.setStyle(estilo);
+            tfIHDLongevidade.setStyle(estilo);
+
+            tfPopulacao.setText(tfPopulacao.getText().replaceAll("[^\\d,]", "").replace(",", "."));
+            tfDomicilios.setText(tfDomicilios.getText().replaceAll("[^\\d,]", "").replace(",", "."));
+            tfPib.setText(tfPib.getText().replaceAll("[^\\d,]", "").replace(",", "."));
+            tfRendaMedia.setText(tfRendaMedia.getText().replaceAll("[^\\d,]", "").replace(",", "."));
+            tfRendaNominal.setText(tfRendaNominal.getText().replaceAll("[^\\d,]", "").replace(",", "."));
+            tfPea.setText(tfPea.getText().replaceAll("[^\\d,]", "").replace(",", "."));
+            tfIDHGeral.setText(tfIDHGeral.getText().replaceAll("[^\\d.]", ""));
+            tfIHGEducacao.setText(tfIHGEducacao.getText().replaceAll("[^\\d.]", ""));
+            tfIHDLongevidade.setText(tfIHDLongevidade.getText().replaceAll("[^\\d.]", ""));
+    
+            tfPopulacao.setEditable(true);
+            tfDomicilios.setEditable(true);
+            tfPib.setEditable(true);
+            tfRendaMedia.setEditable(true);
+            tfRendaNominal.setEditable(true);
+            tfPea.setEditable(true);
+            tfIDHGeral.setEditable(true);
+            tfIHGEducacao.setEditable(true);
+            tfIHDLongevidade.setEditable(true);
+            
+            editar.setText("Salvar");
+            isButtonPressed = true;
+        } else {
+            String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
+            
+            tfPopulacao.setStyle(estilo);
+            tfDomicilios.setStyle(estilo);
+            tfPib.setStyle(estilo);
+            tfRendaMedia.setStyle(estilo);
+            tfRendaNominal.setStyle(estilo);
+            tfPea.setStyle(estilo);
+            tfIDHGeral.setStyle(estilo);
+            tfIHGEducacao.setStyle(estilo);
+            tfIHDLongevidade.setStyle(estilo);
+            
+            atualizarDados(comboBoxMunicipios.getValue());
+            Program.calcularRanking();
+            preencherDados(comboBoxMunicipios.getValue());
+            
+            tfPopulacao.setEditable(false);
+            tfDomicilios.setEditable(false);
+            tfPib.setEditable(false);
+            tfRendaMedia.setEditable(false);
+            tfRendaNominal.setEditable(false);
+            tfPea.setEditable(false);
+            tfIDHGeral.setEditable(false);
+            tfIHGEducacao.setEditable(false);
+            tfIHDLongevidade.setEditable(false);
+            
+            editar.setText("Editar");
+            isButtonPressed = false;
+        }
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -149,6 +250,8 @@ public class FXMLDocumentController implements Initializable {
         // Laço para percorrer a lista dos meus objetos.
         for (Municipio municipios : Program.getObjMunicipios()) {
             if (municipios.getMunicipio().equalsIgnoreCase(municipioSelecionado)) {
+                municipios.atualizarDados();
+                
                 tfCodigo.setText(String.valueOf(municipios.getCodigo()));
                 tfNome.setText(municipios.getMunicipio());
                 tfRegiao.setText(municipios.getRegiaoGeografica());
@@ -159,14 +262,27 @@ public class FXMLDocumentController implements Initializable {
                 tfDomicilios.setText(String.valueOf(df.format(municipios.getDomicilios())));
                 tfDensidade.setText(String.valueOf(df.format(municipios.getDensidadeDemografica()) + " hab/km²"));
                 tfPib.setText(String.valueOf(nf.format(municipios.getPibTotal())));
-                tfPerCapita.setText(String.valueOf(nf.format(municipios.getRendaNominal())));
+                tfPerCapita.setText(String.valueOf(nf.format(municipios.getPibPerCapita())));
                 tfPea.setText(String.valueOf(nf.format(municipios.getPeaDia())));
                 tfRendaMedia.setText(String.valueOf(nf.format(municipios.getRendaMedia())));
                 tfRendaNominal.setText(String.valueOf(nf.format(municipios.getRendaNominal())));
                 tfIDHGeral.setText(String.valueOf(municipios.getIdhGeral()));
                 tfIHGEducacao.setText(String.valueOf(municipios.getIdhEducacao()));
                 tfIHDLongevidade.setText(String.valueOf(municipios.getIdhlongevidade()));
+                laRankingPopulacao.setText(String.valueOf(municipios.getRankPopulacao() + " º"));
+                laRankingPib.setText(String.valueOf(municipios.getRankPIBTotal() + " º"));
+                laRankingPerCapita.setText(String.valueOf(municipios.getRankPIBPerCapita() + " º"));
+                laRankingIDHGeral.setText(String.valueOf(municipios.getRankIDHGeral() + " º"));
+                laDateUltimaAtualizacao.setText(String.valueOf(municipios.getDateUltimaModificacao()));
                 
+                String imagePathBandeira = "/resources/bandeiras/" + municipios.getCodigo() + "_ban.png";
+                String imagePathMapas = "/resources/maps/" + municipios.getCodigo() + "_map.png";
+                
+                Image carregarBandeira = new Image(getClass().getResourceAsStream(imagePathBandeira));
+                imagemBandeiraMunicipio.setImage(carregarBandeira);
+                Image carregarMapa = new Image(getClass().getResourceAsStream(imagePathMapas));
+                imagemMapsMunicipio.setImage(carregarMapa);
+                        
                 if("Muito Alto".equals(municipios.getClassIDHGeral())){
                     // Carrega a nova imagem
                     Image novaImagem = new Image(getClass().getResourceAsStream(imagePathMuitoAlto));
@@ -227,4 +343,32 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    public void atualizarDados(String municipioSelecionado) {
+        // Laço para percorrer a lista dos meus objetos.
+        for (Municipio municipios : Program.getObjMunicipios()) {
+            if (municipios.getMunicipio().equalsIgnoreCase(municipioSelecionado)) {
+                try {
+                    municipios.setPopulacao(parseDouble(tfPopulacao.getText()));
+                    municipios.setDomicilios(parseDouble(tfDomicilios.getText()));
+                    municipios.setPibTotal(parseDouble(tfPib.getText()));
+                    municipios.setRendaMedia(parseDouble(tfRendaMedia.getText()));
+                    municipios.setRendaNominal(parseDouble(tfRendaNominal.getText()));
+                    municipios.setPeaDia(parseDouble(tfPea.getText()));
+                    municipios.setIdhGeral(parseDouble(tfIDHGeral.getText()));
+                    municipios.setIdhEducacao(parseDouble(tfIHGEducacao.getText()));
+                    municipios.setIdhlongevidade(parseDouble(tfIHDLongevidade.getText()));
+                    municipios.setDateUltimaModificacao(getDateTime());
+                } catch (NumberFormatException e) {
+                    // Se houver erro na conversão, não atualiza os valores
+                    System.err.println("Erro ao converter para double: " + e.getMessage());
+                }
+            }
+        }
+    }
+    
+    public static String getDateTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return now.format(formatter);
+    }
 }

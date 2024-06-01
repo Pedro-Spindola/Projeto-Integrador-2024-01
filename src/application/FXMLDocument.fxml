@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
    <children>
       <Pane layoutX="240.0" prefHeight="720.0" prefWidth="1040.0" style="-fx-background-color: linear-gradient(to right bottom, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #fbf7ff, #fceeff, #ffe4ff, #ffcbe7, #ffb5af, #ffaf66, #e8bb00); -fx-opacity: 0.3;" />
       <Pane prefHeight="720.0" prefWidth="1040.0" style="-fx-background-color: linear-gradient(to right bottom, #007b63, #319493, #68aab9, #9ec1d5, #ced9e9, #e1e5f0, #f1f2f7, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff); -fx-opacity: 0.2;" />
@@ -31,14 +31,22 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Button fx:id="sair" layoutX="20.0" layoutY="630.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #e8bb00; -fx-background-radius: 10; -fx-border-color: #e8bb00; -fx-border-radius: 10;" text="Sair" textFill="#f9fff6">
+            <Button fx:id="sair" layoutX="20.0" layoutY="630.0" mnemonicParsing="false" onAction="#FecharProgramaButton" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #e8bb00; -fx-background-radius: 10; -fx-border-color: #e8bb00; -fx-border-radius: 10;" text="Sair" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="editar" layoutX="20.0" layoutY="590.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #F9FFF6; -fx-border-radius: 10;" text="Editar" textFill="#e8bb00">
+               </font>
+               <effect>
+                  <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
+               </effect>
+            </Button>
+            <Button fx:id="editar" layoutX="20.0" layoutY="590.0" mnemonicParsing="false" onAction="#AtivarButtonEditar" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;" text="Editar" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <effect>
+                  <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
+               </effect>
+            </Button>
             <Pane layoutX="10.0" layoutY="570.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
             <Pane layoutX="10.0" layoutY="70.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
             <Label layoutX="10.0" layoutY="350.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="POPULAÇÃO:" textFill="#f9fff6">
@@ -66,40 +74,73 @@
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="540.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="30/05/2024 23:40:00" textAlignment="CENTER" textFill="#f9fff6">
+            <Label fx:id="laDateUltimaAtualizacao" alignment="CENTER" layoutX="10.0" layoutY="540.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="30/05/2024 23:40:00" textAlignment="CENTER" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="180.0" layoutY="350.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+            <Label fx:id="laRankingPopulacao" alignment="CENTER" layoutX="180.0" layoutY="350.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="180.0" layoutY="390.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+            <Label fx:id="laRankingPib" alignment="CENTER" layoutX="180.0" layoutY="390.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="180.0" layoutY="430.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+            <Label fx:id="laRankingPerCapita" alignment="CENTER" layoutX="180.0" layoutY="430.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="180.0" layoutY="470.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
+            <Label fx:id="laRankingIDHGeral" alignment="CENTER" layoutX="180.0" layoutY="470.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" text="99º" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-         </children></Pane>
+            <ImageView fx:id="imagemMapsMunicipio" fitHeight="210.0" fitWidth="210.0" layoutX="10.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/maps/52_map.png" />
+               </image>
+               <effect>
+                  <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
+               </effect>
+            </ImageView>
+         </children>
+      </Pane>
       <Pane layoutX="260.0" layoutY="20.0" maxHeight="50.0" maxWidth="1010.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10;">
          <children>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="942.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imagemBandeiraMunicipio" fitHeight="40.0" fitWidth="40.0" layoutX="942.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/Flag_of_Goiás.svg.png" />
+                  <Image url="@../resources/bandeiras/52_ban.png" />
                </image>
+               <effect>
+                  <DropShadow color="rgba(0, 0, 0, 0.5)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
+               </effect>
             </ImageView>
-            <ComboBox fx:id="comboBoxMunicipios" layoutX="10.0" layoutY="12.0" maxHeight="200.0" maxWidth="600.0" prefHeight="20.0" prefWidth="600.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" />
+            <ComboBox fx:id="comboBoxMunicipios" layoutX="10.0" layoutY="10.0" maxHeight="200.0" maxWidth="600.0" minHeight="30.0" prefHeight="30.0" prefWidth="600.0" promptText="Goiás" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" stylesheets="@../util/comboBoxStyle.css" />
+            <TextField fx:id="tfCodigo1" layoutX="697.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" text="52" />
+            <Label layoutX="632.0" layoutY="10.0" minHeight="30.0" prefHeight="20.0" prefWidth="60.0" text="CÓDIGO:" textFill="#007b63">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="editar1" alignment="CENTER" layoutX="862.0" layoutY="10.0" minHeight="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #007b63; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
+               </effect>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icon/lupa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
          <effect>
             <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
@@ -227,19 +268,19 @@
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="tfIDHGeral" editable="false" layoutX="10.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <TextField fx:id="tfIDHGeral" editable="false" layoutX="10.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
             <Label layoutX="318.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: EDUCAÇÃO">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="tfIHGEducacao" editable="false" layoutX="310.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <TextField fx:id="tfIHGEducacao" editable="false" layoutX="310.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
             <Label layoutX="618.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="200.0" text="IDH: LONGEVIDADE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="tfIHDLongevidade" editable="false" layoutX="610.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
+            <TextField fx:id="tfIHDLongevidade" editable="false" layoutX="610.0" layoutY="520.0" minHeight="25.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;" />
             <ImageView fitHeight="150.0" fitWidth="22.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/basic.png" />
@@ -265,17 +306,17 @@
                   <Image url="@../resources/icon/louro.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imagemIDHGeral" fitHeight="20.0" fitWidth="16.0" layoutX="218.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imagemIDHGeral" fitHeight="20.0" fitWidth="16.0" layoutX="98.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/null.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imagemIDHEducacao" fitHeight="20.0" fitWidth="16.0" layoutX="518.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imagemIDHEducacao" fitHeight="20.0" fitWidth="16.0" layoutX="398.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/null.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imagemIDHLongevidade" fitHeight="20.0" fitWidth="16.0" layoutX="818.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imagemIDHLongevidade" fitHeight="20.0" fitWidth="16.0" layoutX="698.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon/null.png" />
                </image>
