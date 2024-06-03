@@ -48,7 +48,7 @@ public class Municipio {
         this.idhEducacao = idhEducacao;
         this.idhlongevidade = idhlongevidade;
         this.densidadeDemografica = calcularDensidadeDemografica(populacao, area);
-        this.pibPerCapita = calcularPIBPerCapita(populacao, pibTotal);
+        this.pibPerCapita = calcularPIBPerCapita(populacao, (pibTotal * 1000));
         this.classIDHGeral = classificarIDHGeral(idhGeral);
         this.classIDHEducacao = classificarIDHEducacao(idhEducacao);
         this.classIDHLongevidade = classificarIDHLongevidade(idhlongevidade);
@@ -68,7 +68,7 @@ public class Municipio {
     }
     
     private double calcularPIBPerCapita(double populacao, double pib){
-        double resultado = ((pib * 1000) / populacao);
+        double resultado = (pib / populacao);
         return resultado;
     }
     

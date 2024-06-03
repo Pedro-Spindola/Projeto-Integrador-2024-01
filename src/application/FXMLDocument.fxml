@@ -113,14 +113,14 @@
          <children>
             <ImageView fx:id="imagemBandeiraMunicipio" fitHeight="40.0" fitWidth="40.0" layoutX="942.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/bandeiras/52_ban.png" />
+                  <Image url="@../resources/icon/null.png" />
                </image>
                <effect>
                   <DropShadow color="rgba(0, 0, 0, 0.5)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
                </effect>
             </ImageView>
-            <ComboBox fx:id="comboBoxMunicipios" layoutX="10.0" layoutY="10.0" maxHeight="200.0" maxWidth="600.0" minHeight="30.0" prefHeight="30.0" prefWidth="600.0" promptText="Goiás" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" stylesheets="@../util/comboBoxStyle.css" />
-            <TextField fx:id="tfCodigo1" layoutX="697.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" text="52" />
+            <ComboBox fx:id="comboBoxMunicipios" layoutX="10.0" layoutY="10.0" maxHeight="200.0" maxWidth="600.0" minHeight="30.0" prefHeight="30.0" prefWidth="600.0" style="-fx-background-color: #F9FFF6; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" stylesheets="@../util/comboBoxStyle.css" />
+            <TextField fx:id="tfCodigo1" layoutX="697.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 10; -fx-border-color: #007b63; -fx-border-radius: 10;" />
             <Label layoutX="632.0" layoutY="10.0" minHeight="30.0" prefHeight="20.0" prefWidth="60.0" text="CÓDIGO:" textFill="#007b63">
                <font>
                   <Font name="System Bold" size="14.0" />

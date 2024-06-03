@@ -39,6 +39,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Municipio;
 import javafx.stage.Stage;
+import util.Constraints;
 
 /**
  *
@@ -155,16 +156,6 @@ public class FXMLDocumentController implements Initializable {
         if (!isButtonPressed) {
             String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: #e8bb00;";
             
-            tfPopulacao.setStyle(estilo);
-            tfDomicilios.setStyle(estilo);
-            tfPib.setStyle(estilo);
-            tfRendaMedia.setStyle(estilo);
-            tfRendaNominal.setStyle(estilo);
-            tfPea.setStyle(estilo);
-            tfIDHGeral.setStyle(estilo);
-            tfIHGEducacao.setStyle(estilo);
-            tfIHDLongevidade.setStyle(estilo);
-
             tfPopulacao.setText(tfPopulacao.getText().replaceAll("[^\\d,]", "").replace(",", "."));
             tfDomicilios.setText(tfDomicilios.getText().replaceAll("[^\\d,]", "").replace(",", "."));
             tfPib.setText(tfPib.getText().replaceAll("[^\\d,]", "").replace(",", "."));
@@ -174,6 +165,29 @@ public class FXMLDocumentController implements Initializable {
             tfIDHGeral.setText(tfIDHGeral.getText().replaceAll("[^\\d.]", ""));
             tfIHGEducacao.setText(tfIHGEducacao.getText().replaceAll("[^\\d.]", ""));
             tfIHDLongevidade.setText(tfIHDLongevidade.getText().replaceAll("[^\\d.]", ""));
+            
+            Constraints.validacaoParaNumeros(tfPopulacao);
+            Constraints.validacaoParaNumerosDecimal(tfDomicilios);
+            Constraints.validacaoParaNumerosDecimal(tfPib);
+            Constraints.validacaoParaNumerosDecimal(tfRendaMedia);
+            Constraints.validacaoParaNumerosDecimal(tfRendaNominal);
+            Constraints.validacaoParaNumerosDecimal(tfPea);
+            Constraints.validacaoParaNumerosDecimal(tfIDHGeral);
+            Constraints.validacaoParaNumerosDecimal(tfIHGEducacao);
+            Constraints.validacaoParaNumerosDecimal(tfIHDLongevidade);
+            Constraints.validacaoParaNumerosDecimalComLimiteDeDigito(tfIDHGeral);
+            Constraints.validacaoParaNumerosDecimalComLimiteDeDigito(tfIHGEducacao);
+            Constraints.validacaoParaNumerosDecimalComLimiteDeDigito(tfIHDLongevidade);
+            
+            tfPopulacao.setStyle(estilo);
+            tfDomicilios.setStyle(estilo);
+            tfPib.setStyle(estilo);
+            tfRendaMedia.setStyle(estilo);
+            tfRendaNominal.setStyle(estilo);
+            tfPea.setStyle(estilo);
+            tfIDHGeral.setStyle(estilo);
+            tfIHGEducacao.setStyle(estilo);
+            tfIHDLongevidade.setStyle(estilo);
     
             tfPopulacao.setEditable(true);
             tfDomicilios.setEditable(true);
@@ -190,6 +204,16 @@ public class FXMLDocumentController implements Initializable {
         } else {
             String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
             
+            Constraints.setRemoveTextFieldDouble(tfPopulacao);
+            Constraints.setRemoveTextFieldDouble(tfDomicilios);
+            Constraints.setRemoveTextFieldDouble(tfPib);
+            Constraints.setRemoveTextFieldDouble(tfRendaMedia);
+            Constraints.setRemoveTextFieldDouble(tfRendaNominal);
+            Constraints.setRemoveTextFieldDouble(tfPea);
+            Constraints.setRemoveTextFieldDouble(tfIDHGeral);
+            Constraints.setRemoveTextFieldDouble(tfIHGEducacao);
+            Constraints.setRemoveTextFieldDouble(tfIHDLongevidade);
+            
             tfPopulacao.setStyle(estilo);
             tfDomicilios.setStyle(estilo);
             tfPib.setStyle(estilo);
@@ -200,10 +224,6 @@ public class FXMLDocumentController implements Initializable {
             tfIHGEducacao.setStyle(estilo);
             tfIHDLongevidade.setStyle(estilo);
             
-            atualizarDados(comboBoxMunicipios.getValue());
-            Program.calcularRanking();
-            preencherDados(comboBoxMunicipios.getValue());
-            
             tfPopulacao.setEditable(false);
             tfDomicilios.setEditable(false);
             tfPib.setEditable(false);
@@ -213,6 +233,9 @@ public class FXMLDocumentController implements Initializable {
             tfIDHGeral.setEditable(false);
             tfIHGEducacao.setEditable(false);
             tfIHDLongevidade.setEditable(false);
+            
+            atualizarDados(comboBoxMunicipios.getValue());
+            preencherDados(comboBoxMunicipios.getValue());
             
             editar.setText("Editar");
             isButtonPressed = false;
@@ -228,7 +251,7 @@ public class FXMLDocumentController implements Initializable {
         comboBoxMunicipios.setItems(listMunicipios);
         
         // Definir por padrão o comboBox para selecionar a primeira linha.
-        comboBoxMunicipios.getSelectionModel().selectFirst();
+        comboBoxMunicipios.getSelectionModel().clearSelection();
         
         // Método para retorna o valor escolhido pelo o ComboBox
         comboBoxMunicipios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -237,11 +260,13 @@ public class FXMLDocumentController implements Initializable {
                 preencherDados(newValue);
             }
         });
+        
     }    
     
     public void preencherDados(String municipioSelecionado) {
         Locale localeBrasil = new Locale("pt", "BR");
-
+        calcularRanking();
+                            
         // Formatar o valor para a modeda BRL
         NumberFormat nf = NumberFormat.getCurrencyInstance(localeBrasil);
         // Formato o numero para exibir.
@@ -358,6 +383,7 @@ public class FXMLDocumentController implements Initializable {
                     municipios.setIdhEducacao(parseDouble(tfIHGEducacao.getText()));
                     municipios.setIdhlongevidade(parseDouble(tfIHDLongevidade.getText()));
                     municipios.setDateUltimaModificacao(getDateTime());
+                    preencherDados(comboBoxMunicipios.getValue());
                 } catch (NumberFormatException e) {
                     // Se houver erro na conversão, não atualiza os valores
                     System.err.println("Erro ao converter para double: " + e.getMessage());
@@ -366,6 +392,34 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+        public static void calcularRanking(){
+        
+        ObservableList<Municipio> municipios = Program.getObjMunicipios();
+     
+        // Percorrendo a lista com for
+        for (int i = 0; i < municipios.size(); i++) {
+            int rankPopulacao = 1, rankPIBTotal = 1, rankPIBPerCapita = 1, rankIDHGeral = 1;
+            for (int j = 0; j < municipios.size(); j++){
+                if(municipios.get(i).getPopulacao() < municipios.get(j).getPopulacao()){
+                    rankPopulacao++;
+                }
+                if(municipios.get(i).getPibTotal()< municipios.get(j).getPibTotal()){
+                    rankPIBTotal++;
+                }
+                if(municipios.get(i).getPibPerCapita()< municipios.get(j).getPibPerCapita()){
+                    rankPIBPerCapita++;
+                }
+                if(municipios.get(i).getIdhGeral()< municipios.get(j).getIdhGeral()){
+                    rankIDHGeral++;
+                }
+            }
+            municipios.get(i).setRankPopulacao(rankPopulacao);
+            municipios.get(i).setRankPIBTotal(rankPIBTotal);
+            municipios.get(i).setRankPIBPerCapita(rankPIBPerCapita);
+            municipios.get(i).setRankIDHGeral(rankIDHGeral);
+        }
+    }
+        
     public static String getDateTime() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");

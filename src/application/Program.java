@@ -85,10 +85,9 @@ public class Program extends Application {
         }catch(IOException e){
             System.out.println("Error> " + e.getMessage());
         }
-        calcularRanking();
         launch(args); 
     }
-    
+    /*
     public static void calcularRanking(){
         // Percorrendo a lista com for
         for (int i = 0; i < municipios.size(); i++) {
@@ -112,7 +111,7 @@ public class Program extends Application {
             municipios.get(i).setRankPIBPerCapita(rankPIBPerCapita);
             municipios.get(i).setRankIDHGeral(rankIDHGeral);
         }
-    }
+    }*/
     
     public static ObservableList<String> getMunicipios() {
         return listMunicipios;
