@@ -37,6 +37,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import model.Municipio;
 import javafx.stage.Stage;
 import util.Constraints;
@@ -104,6 +105,9 @@ public class FXMLDocumentController implements Initializable {
     private TextField tfIHDLongevidade;
     
     @FXML
+    private TextField inCode;
+        
+    @FXML
     private Label laRankingPopulacao;
     
     @FXML
@@ -139,6 +143,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button editar;
     
+    @FXML 
+    private Button pesquisar; 
+    
+    @FXML
+    private Button estatistica ;
+    
+    @FXML 
+    private Button sobre; 
+    
     private String imagePathMuitoAlto = "/resources/icon/setaMuitoAlto.png";
     private String imagePathAlto = "/resources/icon/setaAlto.png";
     private String imagePathMedio = "/resources/icon/setaMedio.png";
@@ -147,14 +160,31 @@ public class FXMLDocumentController implements Initializable {
     private boolean isButtonPressed = false;
     
     @FXML
-    private void FecharProgramaButton(ActionEvent event) {
-        Platform.exit(); // Fecha o programa
+    private void fecharProgramaButton(ActionEvent event) {
+        if (isButtonPressed == false) {
+            Platform.exit(); // Fecha o programa
+        }
     }
     
     @FXML
-    private void AtivarButtonEditar() {
+    private void btnSobre(ActionEvent event) {
+        if (isButtonPressed == false) {
+            // Abrir a pagina sobre.
+        }
+    }
+    
+    @FXML
+    private void btnestatistica(ActionEvent event) {
+        if (isButtonPressed == false) {
+            // Abrir a pagina sobre.
+        }
+    }
+    
+    @FXML
+    private void ativarButtonEditar() {
         if (!isButtonPressed) {
             String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: #e8bb00;";
+            String btnEstiloDelete = "-fx-background-color: #c12838; -fx-background-radius: 10; -fx-border-color: #c12838; -fx-border-radius: 10;";
             
             tfPopulacao.setText(tfPopulacao.getText().replaceAll("[^\\d,]", "").replace(",", "."));
             tfDomicilios.setText(tfDomicilios.getText().replaceAll("[^\\d,]", "").replace(",", "."));
@@ -200,9 +230,14 @@ public class FXMLDocumentController implements Initializable {
             tfIHDLongevidade.setEditable(true);
             
             editar.setText("Salvar");
+            estatistica.setText("Deletar");
+            estatistica.setStyle(btnEstiloDelete);
+            estatistica.setTextFill(Color.web("#f9fff6"));
+            sobre.setText("Cancelar");
             isButtonPressed = true;
         } else {
             String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
+            String btnEstilo = "-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;";
             
             Constraints.setRemoveTextFieldDouble(tfPopulacao);
             Constraints.setRemoveTextFieldDouble(tfDomicilios);
@@ -238,6 +273,10 @@ public class FXMLDocumentController implements Initializable {
             preencherDados(comboBoxMunicipios.getValue());
             
             editar.setText("Editar");
+            estatistica.setText("Estatística");
+            estatistica.setStyle(btnEstilo);
+            estatistica.setTextFill(Color.web("#e8bb00"));
+            sobre.setText("Sobre");
             isButtonPressed = false;
         }
     }
@@ -260,8 +299,27 @@ public class FXMLDocumentController implements Initializable {
                 preencherDados(newValue);
             }
         });
-        
+        Constraints.validacaoParaNumeros(inCode);
     }    
+    
+    @FXML
+    private void verificarCode() {
+        String code = inCode.getText();
+        if (!code.equals("0")) {
+            for (Municipio municipios : Program.getObjMunicipios()) {
+                if (String.valueOf(municipios.getCodigo()).equalsIgnoreCase(code)) {
+                    String municipio = municipios.getMunicipio();
+                    comboBoxMunicipios.getSelectionModel().select(municipio);
+                    preencherDados(municipio);
+                }
+            }
+        }else {
+            // Adicionar janela informando o erro ("Município não encontrado.")
+            inCode.setText("");
+            comboBoxMunicipios.getSelectionModel().clearSelection();
+        }
+        inCode.setText("");
+    }
     
     public void preencherDados(String municipioSelecionado) {
         Locale localeBrasil = new Locale("pt", "BR");

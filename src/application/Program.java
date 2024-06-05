@@ -53,7 +53,7 @@ public class Program extends Application {
         stage.show();
     }
     public static void main(String[] args){
-        String path = "C:\\Projeto Integrador\\entrada\\01.ProjetoIntegrador_BaseMunicipios_In.csv";
+        String path = "C:\\Projeto Integrador\\in\\01.ProjetoIntegrador_BaseMunicipios_In.csv";
         Municipio municipio;
         
         try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"))){
