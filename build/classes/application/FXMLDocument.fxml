@@ -107,7 +107,7 @@
                   <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
                </effect>
             </ImageView>
-            <Button fx:id="sobre" layoutX="120.0" layoutY="545.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;" text="Sobre" textFill="#e8bb00">
+            <Button fx:id="sobre" layoutX="120.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnSobre" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;" text="Sobre" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -115,7 +115,7 @@
                   <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
                </effect>
             </Button>
-            <Button fx:id="estatistica" layoutX="20.0" layoutY="545.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;" text="Estatística" textFill="#e8bb00">
+            <Button fx:id="estatistica" layoutX="20.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnestatistica" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;" text="Estatística" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

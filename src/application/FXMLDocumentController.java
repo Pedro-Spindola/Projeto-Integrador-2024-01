@@ -23,6 +23,7 @@ import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -31,7 +32,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -39,7 +43,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import model.Municipio;
-import javafx.stage.Stage;
 import util.Constraints;
 
 /**
@@ -168,21 +171,75 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void btnSobre(ActionEvent event) {
+        // Btn Sobre / Cancelar
         if (isButtonPressed == false) {
-            // Abrir a pagina sobre.
+            // Sobre
+        }else{
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("EMGO");
+            alert.setHeaderText(null);
+            alert.setContentText("Deseja cancelar as alterações?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
+                String btnEstilo = "-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;";
+
+                Constraints.setRemoveTextFieldDouble(tfPopulacao);
+                Constraints.setRemoveTextFieldDouble(tfDomicilios);
+                Constraints.setRemoveTextFieldDouble(tfPib);
+                Constraints.setRemoveTextFieldDouble(tfRendaMedia);
+                Constraints.setRemoveTextFieldDouble(tfRendaNominal);
+                Constraints.setRemoveTextFieldDouble(tfPea);
+                Constraints.setRemoveTextFieldDouble(tfIDHGeral);
+                Constraints.setRemoveTextFieldDouble(tfIHGEducacao);
+                Constraints.setRemoveTextFieldDouble(tfIHDLongevidade);
+
+                tfPopulacao.setStyle(estilo);
+                tfDomicilios.setStyle(estilo);
+                tfPib.setStyle(estilo);
+                tfRendaMedia.setStyle(estilo);
+                tfRendaNominal.setStyle(estilo);
+                tfPea.setStyle(estilo);
+                tfIDHGeral.setStyle(estilo);
+                tfIHGEducacao.setStyle(estilo);
+                tfIHDLongevidade.setStyle(estilo);
+
+                tfPopulacao.setEditable(false);
+                tfDomicilios.setEditable(false);
+                tfPib.setEditable(false);
+                tfRendaMedia.setEditable(false);
+                tfRendaNominal.setEditable(false);
+                tfPea.setEditable(false);
+                tfIDHGeral.setEditable(false);
+                tfIHGEducacao.setEditable(false);
+                tfIHDLongevidade.setEditable(false);
+
+                preencherDados(comboBoxMunicipios.getValue());
+
+                editar.setText("Editar");
+                estatistica.setText("Estatística");
+                estatistica.setStyle(btnEstilo);
+                estatistica.setTextFill(Color.web("#e8bb00"));
+                sobre.setText("Sobre");
+                isButtonPressed = false;
+            } else {
+                // VOLTAR
+            }
         }
     }
     
     @FXML
     private void btnestatistica(ActionEvent event) {
+        // Btn estatistica / deletar
         if (isButtonPressed == false) {
-            // Abrir a pagina sobre.
+            // Estatística
+            
         }
     }
     
     @FXML
     private void ativarButtonEditar() {
-        if (!isButtonPressed) {
+        if (!isButtonPressed && comboBoxMunicipios.getSelectionModel().getSelectedItem() != null) {
             String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: #e8bb00;";
             String btnEstiloDelete = "-fx-background-color: #c12838; -fx-background-radius: 10; -fx-border-color: #c12838; -fx-border-radius: 10;";
             
@@ -236,6 +293,16 @@ public class FXMLDocumentController implements Initializable {
             sobre.setText("Cancelar");
             isButtonPressed = true;
         } else {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("EMGO");
+            alert.setHeaderText(null);
+            alert.setContentText("Deseja salvar as alterações?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                atualizarDados(comboBoxMunicipios.getValue());
+            } else {
+                //NÃO SALVO
+            }
             String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
             String btnEstilo = "-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;";
             
@@ -269,7 +336,6 @@ public class FXMLDocumentController implements Initializable {
             tfIHGEducacao.setEditable(false);
             tfIHDLongevidade.setEditable(false);
             
-            atualizarDados(comboBoxMunicipios.getValue());
             preencherDados(comboBoxMunicipios.getValue());
             
             editar.setText("Editar");
