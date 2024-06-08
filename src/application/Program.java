@@ -17,11 +17,17 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,7 +56,7 @@ public class Program extends Application {
         primaryStage = stage;
         stage.setResizable(false);
         
-        scene = new Scene(loadFXML("FXMLLoginApp"));
+        scene = new Scene(loadFXML("/view/FXMLLoginApp"));
         stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
@@ -101,6 +107,52 @@ public class Program extends Application {
             System.out.println("Error> " + e.getMessage());
         }
         launch(args); 
+    }
+    
+    public static void exportaCSV(){
+        String path = "C:\\Projeto Integrador";
+        try{
+            File outDiretorio = new File(path + "/out");
+            if (!outDiretorio.exists()) {
+                outDiretorio.mkdir();
+            }
+            
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "\\out\\01.ProjetoIntegrador_BaseMunicipios_Out.csv"))) {
+            Locale localeBrasil = new Locale("pt", "BR");
+                            
+        // Formatar o valor para a modeda BRL
+        NumberFormat nf = NumberFormat.getCurrencyInstance(localeBrasil);
+        // Formato o numero para exibir.
+        DecimalFormat df = new DecimalFormat("#,##0.##");
+            String lineMenu = "Código IBGE;Municípios;Microrregião;Estado;Região Geográfica;Área Km²;População;Domicílios;PIB Total (R$ mil);IDH - Índice de Desenv. Humano;Renda Média;Renda Nominal;PEA Dia;IDH - Dimensão Educação;IDH - Dimensão Longevidade; Última Atualização";
+            bw.write(lineMenu);
+            bw.newLine();
+                for (Municipio municipio : municipios) {
+                    String codigo = (String.valueOf(municipio.getCodigo()));
+                    String nome = (municipio.getMunicipio());
+                    String regiao = (municipio.getRegiaoGeografica());
+                    String estado = (municipio.getEstado());
+                    String micro = (municipio.getMicrorregiao());
+                    String area = (String.valueOf(df.format(municipio.getArea())));
+                    String populacao = (String.valueOf(df.format(municipio.getPopulacao())));
+                    String domicilios = (String.valueOf(df.format(municipio.getDomicilios())));
+                    String pib = (String.valueOf(nf.format(municipio.getPibTotal() / 1000).replaceAll("[^\\d.,]", "")));
+                    String pea = (String.valueOf(nf.format(municipio.getPeaDia()).replaceAll("[^\\d.,]", "")));
+                    String rendaMedia = (String.valueOf(nf.format(municipio.getRendaMedia()).replaceAll("[^\\d.,]", "")));
+                    String rendaNominal = (String.valueOf(nf.format(municipio.getRendaNominal()).replaceAll("[^\\d.,]", "")));
+                    String idhGeral = (String.valueOf(municipio.getIdhGeral()));
+                    String idhEducacao = (String.valueOf(municipio.getIdhEducacao()));
+                    String idhLongevidade = (String.valueOf(municipio.getIdhlongevidade()));
+                    String DateUltimaAtualizacao = (String.valueOf(municipio.getDateUltimaModificacao()));
+                    
+                    String line = codigo + ";" + nome + ";" + regiao + ";" + estado + ";" + micro + ";" + area + ";" + populacao + ";" + domicilios + ";" + pib + ";" + idhGeral + ";" + rendaMedia + ";" + rendaNominal + ";" + pea + ";" + idhEducacao + ";" +idhLongevidade + ";" + DateUltimaAtualizacao;
+                    bw.write(line);
+                    bw.newLine();
+                }
+            }
+        }catch(IOException e){
+            System.out.println("Error> " + e.getMessage());
+        }
     }
     
     public static ObservableList<String> getMunicipios() {

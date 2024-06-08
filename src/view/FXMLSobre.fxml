@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="480.0" minHeight="480.0" prefHeight="480.0" prefWidth="340.0" style="-fx-background-color: linear-gradient(to right bottom, #007b63, #0f7e62, #1a8161, #238360, #2b865f); -fx-background-radius: 0; -fx-padding: 20; -fx-border-color: #FFFFFF; -fx-border-width: 5; -fx-border-radius: 0; -fx-border-color: #e8bb00;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLSobreController">
+   <children>
+      <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="100.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/icon/icon.png" />
+         </image>
+         <effect>
+            <DropShadow height="12.0" radius="5.5" width="12.0">
+               <input>
+                  <InnerShadow choke="0.2" height="25.0" radius="12.0" width="25.0" />
+               </input>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <Pane layoutX="70.0" layoutY="200.0" prefHeight="240.0" prefWidth="210.0">
+         <children>
+            <Label alignment="CENTER" minWidth="210.0" text="Estatísticas Municipais de Goiás" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="30.0" minWidth="210.0" text="Versão: 1.0" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="60.0" minWidth="201.0" text="GoiásDB Solutions" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="90.0" minWidth="210.0" text="Criadores" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="120.0" minWidth="210.0" text="Christian Amsberg Janner" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="150.0" minWidth="210.0" text="Luís Fernando de Oliveira Siqueira" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="180.0" minWidth="210.0" text="Ozéias Campos de Souza" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="210.0" minWidth="210.0" text="Pedro Henrique P. M. Spíndola" textAlignment="CENTER" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

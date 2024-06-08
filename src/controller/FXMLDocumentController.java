@@ -14,8 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package application;
 
+package controller;
+
+import application.Program;
 import static java.lang.Double.parseDouble;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -31,7 +33,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -42,6 +47,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import model.Municipio;
 import util.Constraints;
 
@@ -123,6 +129,12 @@ public class FXMLDocumentController implements Initializable {
     private Label laRankingIDHGeral;
     
     @FXML
+    private Label laRankingIDHEducacao;
+    
+    @FXML
+    private Label laRankingIDHLongevidade;
+    
+    @FXML
     private Label laDateUltimaAtualizacao;
     
     @FXML
@@ -150,7 +162,7 @@ public class FXMLDocumentController implements Initializable {
     private Button pesquisar; 
     
     @FXML
-    private Button estatistica ;
+    private Button exportar ;
     
     @FXML 
     private Button sobre; 
@@ -173,7 +185,17 @@ public class FXMLDocumentController implements Initializable {
     private void btnSobre(ActionEvent event) {
         // Btn Sobre / Cancelar
         if (isButtonPressed == false) {
-            // Sobre
+            try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/FXMLSobre.fxml"));
+            Parent root = fxmlLoader.load();
+            
+            Stage stage = new Stage();
+            stage.setTitle("New Window");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         }else{
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("EMGO");
@@ -217,9 +239,9 @@ public class FXMLDocumentController implements Initializable {
                 preencherDados(comboBoxMunicipios.getValue());
 
                 editar.setText("Editar");
-                estatistica.setText("Estatística");
-                estatistica.setStyle(btnEstilo);
-                estatistica.setTextFill(Color.web("#e8bb00"));
+                exportar.setText("Exportar");
+                exportar.setStyle(btnEstilo);
+                exportar.setTextFill(Color.web("#e8bb00"));
                 sobre.setText("Sobre");
                 isButtonPressed = false;
             } else {
@@ -229,11 +251,60 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    private void btnestatistica(ActionEvent event) {
-        // Btn estatistica / deletar
+    private void btnExporta(ActionEvent event) {
+        // Btn exportar / deletar
         if (isButtonPressed == false) {
-            // Estatística
-            
+            Program.exportaCSV();
+        } else{
+            String selectedMunicipio = comboBoxMunicipios.getSelectionModel().getSelectedItem();
+            if (selectedMunicipio != null) {
+                // Remove o nome do município da lista
+                Program.getMunicipios().remove(selectedMunicipio);
+                // Remove o objeto Municipio correspondente da lista
+                Program.getObjMunicipios().removeIf(municipio -> municipio.getMunicipio().equals(selectedMunicipio));
+                
+                String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
+                String btnEstilo = "-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;";
+
+                Constraints.setRemoveTextFieldDouble(tfPopulacao);
+                Constraints.setRemoveTextFieldDouble(tfDomicilios);
+                Constraints.setRemoveTextFieldDouble(tfPib);
+                Constraints.setRemoveTextFieldDouble(tfRendaMedia);
+                Constraints.setRemoveTextFieldDouble(tfRendaNominal);
+                Constraints.setRemoveTextFieldDouble(tfPea);
+                Constraints.setRemoveTextFieldDouble(tfIDHGeral);
+                Constraints.setRemoveTextFieldDouble(tfIHGEducacao);
+                Constraints.setRemoveTextFieldDouble(tfIHDLongevidade);
+
+                tfPopulacao.setStyle(estilo);
+                tfDomicilios.setStyle(estilo);
+                tfPib.setStyle(estilo);
+                tfRendaMedia.setStyle(estilo);
+                tfRendaNominal.setStyle(estilo);
+                tfPea.setStyle(estilo);
+                tfIDHGeral.setStyle(estilo);
+                tfIHGEducacao.setStyle(estilo);
+                tfIHDLongevidade.setStyle(estilo);
+
+                tfPopulacao.setEditable(false);
+                tfDomicilios.setEditable(false);
+                tfPib.setEditable(false);
+                tfRendaMedia.setEditable(false);
+                tfRendaNominal.setEditable(false);
+                tfPea.setEditable(false);
+                tfIDHGeral.setEditable(false);
+                tfIHGEducacao.setEditable(false);
+                tfIHDLongevidade.setEditable(false);
+
+                preencherDados(comboBoxMunicipios.getValue());
+
+                editar.setText("Editar");
+                exportar.setText("Exportar");
+                exportar.setStyle(btnEstilo);
+                exportar.setTextFill(Color.web("#e8bb00"));
+                sobre.setText("Sobre");
+                isButtonPressed = false;
+            }
         }
     }
     
@@ -287,12 +358,12 @@ public class FXMLDocumentController implements Initializable {
             tfIHDLongevidade.setEditable(true);
             
             editar.setText("Salvar");
-            estatistica.setText("Deletar");
-            estatistica.setStyle(btnEstiloDelete);
-            estatistica.setTextFill(Color.web("#f9fff6"));
+            exportar.setText("Deletar");
+            exportar.setStyle(btnEstiloDelete);
+            exportar.setTextFill(Color.web("#f9fff6"));
             sobre.setText("Cancelar");
             isButtonPressed = true;
-        } else {
+        } else if(isButtonPressed){
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("EMGO");
             alert.setHeaderText(null);
@@ -339,9 +410,9 @@ public class FXMLDocumentController implements Initializable {
             preencherDados(comboBoxMunicipios.getValue());
             
             editar.setText("Editar");
-            estatistica.setText("Estatística");
-            estatistica.setStyle(btnEstilo);
-            estatistica.setTextFill(Color.web("#e8bb00"));
+            exportar.setText("Exportar");
+            exportar.setStyle(btnEstilo);
+            exportar.setTextFill(Color.web("#e8bb00"));
             sobre.setText("Sobre");
             isButtonPressed = false;
         }
@@ -422,6 +493,8 @@ public class FXMLDocumentController implements Initializable {
                 laRankingPib.setText(String.valueOf(municipios.getRankPIBTotal() + " º"));
                 laRankingPerCapita.setText(String.valueOf(municipios.getRankPIBPerCapita() + " º"));
                 laRankingIDHGeral.setText(String.valueOf(municipios.getRankIDHGeral() + " º"));
+                laRankingIDHEducacao.setText(String.valueOf(municipios.getRankIDHEducacao()+ " º"));
+                laRankingIDHLongevidade.setText(String.valueOf(municipios.getRankIDHLongevidade()+ " º"));
                 laDateUltimaAtualizacao.setText(String.valueOf(municipios.getDateUltimaModificacao()));
                 
                 String imagePathBandeira = "/resources/bandeiras/" + municipios.getCodigo() + "_ban.png";
@@ -516,13 +589,13 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
-        public static void calcularRanking(){
+    public static void calcularRanking(){
         
         ObservableList<Municipio> municipios = Program.getObjMunicipios();
      
         // Percorrendo a lista com for
         for (int i = 0; i < municipios.size(); i++) {
-            int rankPopulacao = 1, rankPIBTotal = 1, rankPIBPerCapita = 1, rankIDHGeral = 1;
+            int rankPopulacao = 1, rankPIBTotal = 1, rankPIBPerCapita = 1, rankIDHGeral = 1, rankIDHEducacao = 1, rankIDHLongevidade = 1;
             for (int j = 0; j < municipios.size(); j++){
                 if(municipios.get(i).getPopulacao() < municipios.get(j).getPopulacao()){
                     rankPopulacao++;
@@ -536,11 +609,19 @@ public class FXMLDocumentController implements Initializable {
                 if(municipios.get(i).getIdhGeral()< municipios.get(j).getIdhGeral()){
                     rankIDHGeral++;
                 }
+                if(municipios.get(i).getIdhEducacao()< municipios.get(j).getIdhEducacao()){
+                    rankIDHEducacao++;
+                }
+                if(municipios.get(i).getIdhlongevidade()< municipios.get(j).getIdhlongevidade()){
+                    rankIDHLongevidade++;
+                }
             }
             municipios.get(i).setRankPopulacao(rankPopulacao);
             municipios.get(i).setRankPIBTotal(rankPIBTotal);
             municipios.get(i).setRankPIBPerCapita(rankPIBPerCapita);
             municipios.get(i).setRankIDHGeral(rankIDHGeral);
+            municipios.get(i).setRankIDHEducacao(rankIDHEducacao);
+            municipios.get(i).setRankIDHLongevidade(rankIDHLongevidade);
         }
     }
         

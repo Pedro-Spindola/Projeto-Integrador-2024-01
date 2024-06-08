@@ -24,7 +24,7 @@ package model;
  * @brief Class Municipio
  */
 public class Municipio {
-    private int codigo, rankPopulacao, rankPIBTotal, rankPIBPerCapita, rankIDHGeral;
+    private int codigo, rankPopulacao, rankPIBTotal, rankPIBPerCapita, rankIDHGeral, rankIDHEducacao, rankIDHLongevidade;
     private String municipio, microrregiao, estado, regiaoGeografica, classIDHGeral, classIDHEducacao, classIDHLongevidade, dateUltimaModificacao = "01/06/2024 01:40:00";
     private double area, populacao, domicilios, pibTotal, pibPerCapita, rendaMedia, rendaNominal, peaDia, idhGeral, idhEducacao, idhlongevidade, densidadeDemografica;
 
@@ -313,7 +313,21 @@ public class Municipio {
     public void setRankIDHGeral(int rankIDHGeral) {
         this.rankIDHGeral = rankIDHGeral;
     }
-    
-    
+
+    public int getRankIDHEducacao() {
+        return rankIDHEducacao;
+    }
+
+    public void setRankIDHEducacao(int rankIDHEducacao) {
+        this.rankIDHEducacao = rankIDHEducacao;
+    }
+
+    public int getRankIDHLongevidade() {
+        return rankIDHLongevidade;
+    }
+
+    public void setRankIDHLongevidade(int rankIDHLongevidade) {
+        this.rankIDHLongevidade = rankIDHLongevidade;
+    }
     
 }

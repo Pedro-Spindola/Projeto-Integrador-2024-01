@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
    <children>
       <Pane layoutX="240.0" prefHeight="720.0" prefWidth="1040.0" style="-fx-background-color: linear-gradient(to right bottom, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #fbf7ff, #fceeff, #ffe4ff, #ffcbe7, #ffb5af, #ffaf66, #e8bb00); -fx-opacity: 0.3;" />
       <Pane prefHeight="720.0" prefWidth="1040.0" style="-fx-background-color: linear-gradient(to right bottom, #007b63, #319493, #68aab9, #9ec1d5, #ced9e9, #e1e5f0, #f1f2f7, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff); -fx-opacity: 0.2;" />
@@ -21,14 +21,14 @@
             <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
          </effect>
          <children>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="475.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="ÚLTIMA ATUALIZAÇÃO" textAlignment="CENTER" textFill="#f9fff6">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="485.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="ÚLTIMA ATUALIZAÇÃO" textAlignment="CENTER" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutY="10.0" minHeight="60.0" minWidth="100.0" prefWidth="230.0" text="EMGO" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" minHeight="40.0" minWidth="100.0" prefHeight="50.0" prefWidth="230.0" text="EMGO" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="40.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
             <Button fx:id="sair" layoutX="20.0" layoutY="635.0" mnemonicParsing="false" onAction="#fecharProgramaButton" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #e8bb00; -fx-background-radius: 10; -fx-border-color: #e8bb00; -fx-border-radius: 10;" text="Sair" textFill="#f9fff6">
@@ -47,59 +47,79 @@
                   <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
                </effect>
             </Button>
-            <Pane layoutX="10.0" layoutY="520.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
-            <Pane layoutX="10.0" layoutY="70.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
-            <Label layoutX="10.0" layoutY="330.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="POPULAÇÃO:" textFill="#f9fff6">
+            <Pane layoutX="10.0" layoutY="530.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
+            <Pane layoutX="10.0" layoutY="50.0" prefHeight="2.0" prefWidth="210.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, transparent 0%, #e8bb00 20%, #e8bb00 80%, transparent 100%);;" />
+            <Label layoutX="10.0" layoutY="300.0" maxHeight="30.0" minHeight="25.0" prefHeight="25.0" prefWidth="170.0" text="POPULAÇÃO:" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="365.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="PIB TOTAL (R$):" textFill="#f9fff6">
+            <Label layoutX="10.0" layoutY="330.0" maxHeight="30.0" minHeight="25.0" prefHeight="25.0" prefWidth="170.0" text="PIB TOTAL (R$):" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="15.0" layoutY="305.0" prefHeight="20.0" prefWidth="200.0" text="RANKING NO ESTADO" textAlignment="CENTER" textFill="#e8bb00">
+            <Label alignment="CENTER" layoutX="15.0" layoutY="270.0" prefHeight="20.0" prefWidth="200.0" text="RANKING NO ESTADO" textAlignment="CENTER" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="400.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="PIB PER CAPITA (R$):" textFill="#f9fff6">
+            <Label layoutX="10.0" layoutY="360.0" maxHeight="30.0" minHeight="25.0" prefHeight="25.0" prefWidth="170.0" text="PIB PER CAPITA (R$):" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="435.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="170.0" text="IDH GERAL:" textFill="#f9fff6">
+            <Label layoutX="10.0" layoutY="390.0" minHeight="25.0" prefHeight="25.0" prefWidth="170.0" text="IDH GERAL:" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="laDateUltimaAtualizacao" alignment="CENTER" layoutX="10.0" layoutY="495.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="30/05/2024 23:40:00" textAlignment="CENTER" textFill="#f9fff6">
+            <Label layoutX="10.0" layoutY="420.0" minHeight="25.0" prefHeight="25.0" prefWidth="170.0" text="IDH EDUCAÇÃO:" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="450.0" minHeight="25.0" prefHeight="25.0" prefWidth="170.0" text="IDH LONGEVIDADE:" textFill="#f9fff6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="laDateUltimaAtualizacao" alignment="CENTER" layoutX="10.0" layoutY="505.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="210.0" text="30/05/2024 23:40:00" textAlignment="CENTER" textFill="#f9fff6">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <Label fx:id="laRankingPopulacao" alignment="CENTER" layoutX="180.0" layoutY="330.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" textFill="#e8bb00">
+            <Label fx:id="laRankingPopulacao" alignment="CENTER" layoutX="180.0" layoutY="300.0" minHeight="25.0" prefHeight="25.0" prefWidth="40.0" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="laRankingPib" alignment="CENTER" layoutX="180.0" layoutY="365.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" textFill="#e8bb00">
+            <Label fx:id="laRankingPib" alignment="CENTER" layoutX="180.0" layoutY="330.0" minHeight="25.0" prefHeight="25.0" prefWidth="40.0" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="laRankingPerCapita" alignment="CENTER" layoutX="180.0" layoutY="400.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" textFill="#e8bb00">
+            <Label fx:id="laRankingPerCapita" alignment="CENTER" layoutX="180.0" layoutY="360.0" minHeight="25.0" prefHeight="25.0" prefWidth="40.0" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="laRankingIDHGeral" alignment="CENTER" layoutX="180.0" layoutY="435.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="40.0" textFill="#e8bb00">
+            <Label fx:id="laRankingIDHGeral" alignment="CENTER" layoutX="180.0" layoutY="390.0" minHeight="25.0" prefHeight="25.0" prefWidth="40.0" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="imagemMapsMunicipio" fitHeight="210.0" fitWidth="210.0" layoutX="10.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="laRankingIDHEducacao" alignment="CENTER" layoutX="180.0" layoutY="420.0" minHeight="25.0" prefHeight="25.0" prefWidth="40.0" textFill="#e8bb00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="laRankingIDHLongevidade" alignment="CENTER" layoutX="180.0" layoutY="450.0" minHeight="25.0" prefHeight="25.0" prefWidth="40.0" textFill="#e8bb00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imagemMapsMunicipio" fitHeight="200.0" fitWidth="200.0" layoutX="15.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/maps/52_map.png" />
                </image>
@@ -115,7 +135,7 @@
                   <DropShadow color="rgba(0, 0, 0, 0.33)" height="40.0" offsetX="4.0" offsetY="4.0" radius="19.5" width="40.0" />
                </effect>
             </Button>
-            <Button fx:id="estatistica" layoutX="20.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnestatistica" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;" text="Estatística" textFill="#e8bb00">
+            <Button fx:id="exportar" layoutX="20.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnExporta" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;" text="Exportar" textFill="#e8bb00">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

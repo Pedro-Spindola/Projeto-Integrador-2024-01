@@ -1,5 +1,23 @@
-package application;
+/*
+ * Copyright (C) 2024 Pedro Spindola
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
+package controller;
+
+import application.Program;
 import java.io.IOException;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
@@ -18,6 +36,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author Pedro Spindola
+ * @date 29/05/2024
+ * @brief Class FXMLLoginAppController
+ */
+
 public class FXMLLoginAppController implements Initializable {
     
     private static final String USERNAME = "admin";
@@ -31,7 +56,7 @@ public class FXMLLoginAppController implements Initializable {
             // Login autenticado
             loginMessage.setText("Login Autenticado!");
             try {
-                Program.setRoot("FXMLDocument");
+                Program.setRoot("/view/FXMLDocument");
             } catch (IOException e) {
                 e.printStackTrace();
             }
