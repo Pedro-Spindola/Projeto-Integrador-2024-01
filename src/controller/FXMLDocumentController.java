@@ -177,7 +177,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void fecharProgramaButton(ActionEvent event) {
         if (isButtonPressed == false) {
-            Platform.exit(); // Fecha o programa
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("EMGO");
+            alert.setHeaderText(null);
+            alert.setContentText("Deseja sair do programa?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK){
+                Platform.exit(); // Fecha o programa
+            }
         }
     }
     
@@ -190,7 +197,7 @@ public class FXMLDocumentController implements Initializable {
             Parent root = fxmlLoader.load();
             
             Stage stage = new Stage();
-            stage.setTitle("New Window");
+            stage.setTitle("EMGO");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
@@ -255,55 +262,69 @@ public class FXMLDocumentController implements Initializable {
         // Btn exportar / deletar
         if (isButtonPressed == false) {
             Program.exportaCSV();
+            
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("EMGO");
+            alert.setHeaderText(null);
+            alert.setContentText("O arquivo CSV foi salvo com sucesso.");
+            alert.showAndWait();
+            
         } else{
-            String selectedMunicipio = comboBoxMunicipios.getSelectionModel().getSelectedItem();
-            if (selectedMunicipio != null) {
-                // Remove o nome do município da lista
-                Program.getMunicipios().remove(selectedMunicipio);
-                // Remove o objeto Municipio correspondente da lista
-                Program.getObjMunicipios().removeIf(municipio -> municipio.getMunicipio().equals(selectedMunicipio));
-                
-                String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
-                String btnEstilo = "-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;";
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("EMGO");
+            alert.setHeaderText(null);
+            alert.setContentText("Deseja apagar o município?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK){
+                String selectedMunicipio = comboBoxMunicipios.getSelectionModel().getSelectedItem();
+                if (selectedMunicipio != null) {
+                    // Remove o nome do município da lista
+                    Program.getMunicipios().remove(selectedMunicipio);
+                    // Remove o objeto Municipio correspondente da lista
+                    Program.getObjMunicipios().removeIf(municipio -> municipio.getMunicipio().equals(selectedMunicipio));
 
-                Constraints.setRemoveTextFieldDouble(tfPopulacao);
-                Constraints.setRemoveTextFieldDouble(tfDomicilios);
-                Constraints.setRemoveTextFieldDouble(tfPib);
-                Constraints.setRemoveTextFieldDouble(tfRendaMedia);
-                Constraints.setRemoveTextFieldDouble(tfRendaNominal);
-                Constraints.setRemoveTextFieldDouble(tfPea);
-                Constraints.setRemoveTextFieldDouble(tfIDHGeral);
-                Constraints.setRemoveTextFieldDouble(tfIHGEducacao);
-                Constraints.setRemoveTextFieldDouble(tfIHDLongevidade);
+                    String estilo = "-fx-background-color: #F9FFF6; -fx-background-insets: 0; -fx-background-radius: 6; -fx-border-color: transparent;";
+                    String btnEstilo = "-fx-background-color: #f9fff6; -fx-background-radius: 10; -fx-border-color: #f9fff6; -fx-border-radius: 10;";
 
-                tfPopulacao.setStyle(estilo);
-                tfDomicilios.setStyle(estilo);
-                tfPib.setStyle(estilo);
-                tfRendaMedia.setStyle(estilo);
-                tfRendaNominal.setStyle(estilo);
-                tfPea.setStyle(estilo);
-                tfIDHGeral.setStyle(estilo);
-                tfIHGEducacao.setStyle(estilo);
-                tfIHDLongevidade.setStyle(estilo);
+                    Constraints.setRemoveTextFieldDouble(tfPopulacao);
+                    Constraints.setRemoveTextFieldDouble(tfDomicilios);
+                    Constraints.setRemoveTextFieldDouble(tfPib);
+                    Constraints.setRemoveTextFieldDouble(tfRendaMedia);
+                    Constraints.setRemoveTextFieldDouble(tfRendaNominal);
+                    Constraints.setRemoveTextFieldDouble(tfPea);
+                    Constraints.setRemoveTextFieldDouble(tfIDHGeral);
+                    Constraints.setRemoveTextFieldDouble(tfIHGEducacao);
+                    Constraints.setRemoveTextFieldDouble(tfIHDLongevidade);
 
-                tfPopulacao.setEditable(false);
-                tfDomicilios.setEditable(false);
-                tfPib.setEditable(false);
-                tfRendaMedia.setEditable(false);
-                tfRendaNominal.setEditable(false);
-                tfPea.setEditable(false);
-                tfIDHGeral.setEditable(false);
-                tfIHGEducacao.setEditable(false);
-                tfIHDLongevidade.setEditable(false);
+                    tfPopulacao.setStyle(estilo);
+                    tfDomicilios.setStyle(estilo);
+                    tfPib.setStyle(estilo);
+                    tfRendaMedia.setStyle(estilo);
+                    tfRendaNominal.setStyle(estilo);
+                    tfPea.setStyle(estilo);
+                    tfIDHGeral.setStyle(estilo);
+                    tfIHGEducacao.setStyle(estilo);
+                    tfIHDLongevidade.setStyle(estilo);
 
-                preencherDados(comboBoxMunicipios.getValue());
+                    tfPopulacao.setEditable(false);
+                    tfDomicilios.setEditable(false);
+                    tfPib.setEditable(false);
+                    tfRendaMedia.setEditable(false);
+                    tfRendaNominal.setEditable(false);
+                    tfPea.setEditable(false);
+                    tfIDHGeral.setEditable(false);
+                    tfIHGEducacao.setEditable(false);
+                    tfIHDLongevidade.setEditable(false);
 
-                editar.setText("Editar");
-                exportar.setText("Exportar");
-                exportar.setStyle(btnEstilo);
-                exportar.setTextFill(Color.web("#e8bb00"));
-                sobre.setText("Sobre");
-                isButtonPressed = false;
+                    preencherDados(comboBoxMunicipios.getValue());
+
+                    editar.setText("Editar");
+                    exportar.setText("Exportar");
+                    exportar.setStyle(btnEstilo);
+                    exportar.setTextFill(Color.web("#e8bb00"));
+                    sobre.setText("Sobre");
+                    isButtonPressed = false;
+                }   
             }
         }
     }
@@ -329,7 +350,7 @@ public class FXMLDocumentController implements Initializable {
             Constraints.validacaoParaNumerosDecimal(tfPib);
             Constraints.validacaoParaNumerosDecimal(tfRendaMedia);
             Constraints.validacaoParaNumerosDecimal(tfRendaNominal);
-            Constraints.validacaoParaNumerosDecimal(tfPea);
+            Constraints.validacaoParaNumeros(tfPea);
             Constraints.validacaoParaNumerosDecimal(tfIDHGeral);
             Constraints.validacaoParaNumerosDecimal(tfIHGEducacao);
             Constraints.validacaoParaNumerosDecimal(tfIHDLongevidade);
@@ -442,18 +463,62 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void verificarCode() {
         String code = inCode.getText();
-        if (!code.equals("0")) {
+        int i = 0;
+        if (!code.equals("")) {
             for (Municipio municipios : Program.getObjMunicipios()) {
                 if (String.valueOf(municipios.getCodigo()).equalsIgnoreCase(code)) {
                     String municipio = municipios.getMunicipio();
                     comboBoxMunicipios.getSelectionModel().select(municipio);
                     preencherDados(municipio);
+                    i++;
                 }
             }
-        }else {
-            // Adicionar janela informando o erro ("Município não encontrado.")
-            inCode.setText("");
-            comboBoxMunicipios.getSelectionModel().clearSelection();
+            if(i == 0){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("EMGO");
+                alert.setHeaderText(null);
+                alert.setContentText("Erro, código do município não encontrado!");
+                alert.showAndWait();
+                inCode.setText("");
+                comboBoxMunicipios.getSelectionModel().clearSelection();
+                
+                tfCodigo.setText("");
+                tfNome.setText("");
+                tfRegiao.setText("");
+                tfEstado.setText("");
+                tfMicrorregiao.setText("");
+                tfArea.setText("");
+                tfPopulacao.setText("");
+                tfDomicilios.setText("");
+                tfDensidade.setText("");
+                tfPib.setText("");
+                tfPerCapita.setText("");
+                tfPea.setText("");
+                tfRendaMedia.setText("");
+                tfRendaNominal.setText("");
+                tfIDHGeral.setText("");
+                tfIHGEducacao.setText("");
+                tfIHDLongevidade.setText("");
+                laRankingPopulacao.setText("");
+                laRankingPib.setText("");
+                laRankingPerCapita.setText("");
+                laRankingIDHGeral.setText("");
+                laRankingIDHEducacao.setText("");
+                laRankingIDHLongevidade.setText("");
+                laDateUltimaAtualizacao.setText("");
+                
+                Image carregarBandeira = new Image(getClass().getResourceAsStream(imagePathNull));
+                imagemBandeiraMunicipio.setImage(carregarBandeira);
+                
+                String imagePathMapas = "/resources/maps/52_map.png";
+                Image carregarMapa = new Image(getClass().getResourceAsStream(imagePathMapas));
+                imagemMapsMunicipio.setImage(carregarMapa);
+
+                Image novaImagem = new Image(getClass().getResourceAsStream(imagePathNull));
+                imagemIDHGeral.setImage(novaImagem);
+                imagemIDHEducacao.setImage(novaImagem);
+                imagemIDHLongevidade.setImage(novaImagem);
+            }
         }
         inCode.setText("");
     }
@@ -483,7 +548,7 @@ public class FXMLDocumentController implements Initializable {
                 tfDensidade.setText(String.valueOf(df.format(municipios.getDensidadeDemografica()) + " hab/km²"));
                 tfPib.setText(String.valueOf(nf.format(municipios.getPibTotal())));
                 tfPerCapita.setText(String.valueOf(nf.format(municipios.getPibPerCapita())));
-                tfPea.setText(String.valueOf(nf.format(municipios.getPeaDia())));
+                tfPea.setText(String.valueOf(df.format(municipios.getPeaDia())+ " hab"));
                 tfRendaMedia.setText(String.valueOf(nf.format(municipios.getRendaMedia())));
                 tfRendaNominal.setText(String.valueOf(nf.format(municipios.getRendaNominal())));
                 tfIDHGeral.setText(String.valueOf(municipios.getIdhGeral()));

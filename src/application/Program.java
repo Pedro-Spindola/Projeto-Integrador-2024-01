@@ -58,6 +58,7 @@ public class Program extends Application {
         
         scene = new Scene(loadFXML("/view/FXMLLoginApp"));
         stage.setScene(scene);
+        stage.setTitle("EMGO");
         stage.show();
         stage.centerOnScreen();
     }
